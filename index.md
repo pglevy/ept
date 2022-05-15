@@ -2,18 +2,26 @@
 layout: default
 title: Home
 ---
+{% assign totalPortfolioValue = 1.0 %}
+{% for account in site.data.accounts %}
+{% assign totalPortfolioValue = totalPortfolioValue | plus: account.value %}
+{% endfor %}
+
 # Enchilada Portfolio Tracker
+
+## Total Portfolio Value: ${{ totalPortfolioValue | round }}
 
 ## Asset Allocation
 
 <!-- get the list of all account holdings -->
 {% assign allAccountHoldings = site.data.account-holdings %}
 
-<table class="usa-table width-mobile-lg">
+<table class="usa-table width-tablet">
 <thead>
 <th>Class</th>
-<th class="text-right">Total</th>
-<th class="text-right">Target</th>
+<th class="text-right">Total ($)</th>
+<th class="text-right">Actual (%)</th>  
+<th class="text-right">Target (%)</th>
 </thead>
 
 <!-- For each asset class... -->
@@ -53,6 +61,8 @@ title: Home
 <!-- Show the final results of the subtotal variable for each class. -->
 {{ subTotal }}
 </td>
+
+<td class="text-right">{{ subTotal | divided_by: totalPortfolioValue | times: 100 | round }}</td>
 
 <td class="text-right">{{ class.target }}</td>
 </tr>
