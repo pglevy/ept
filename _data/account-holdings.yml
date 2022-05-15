@@ -10,3 +10,15 @@
   holdings:
   - symbol: USD
     value: 1892
+- name: Brokerage
+  holdings:
+  - symbol: SWTSX
+    value: 594
+- name: Greenlight Spending
+  holdings:
+  - symbol: USD
+    value: 97
+- name: Greenlight Savings
+  holdings:
+  - symbol: USD
+    value: 405

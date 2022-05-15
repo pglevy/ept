@@ -6,3 +6,15 @@
   institution: Schwab
   treatment: taxable contributions
   value: 919
+- name: Brokerage
+  institution: Schwab
+  treatment: taxable
+  value: 594
+- name: Greenlight Spending
+  institution: Greenlight
+  treatment: taxable
+  value: 97
+- name: Greenlight Savings
+  institution: Greenlight
+  treatment: taxable
+  value: 405

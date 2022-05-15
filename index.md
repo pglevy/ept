@@ -2,7 +2,7 @@
 layout: default
 title: Home
 ---
-{% assign totalPortfolioValue = 1.0 %}
+{% assign totalPortfolioValue = 0.0 %}
 {% for account in site.data.accounts %}
 {% assign totalPortfolioValue = totalPortfolioValue | plus: account.value %}
 {% endfor %}
@@ -10,6 +10,12 @@ title: Home
 # Enchilada Portfolio Tracker
 
 ## Total Portfolio Value: ${{ totalPortfolioValue | round }}
+
+<ul>
+{% for item in site.data.notes %}
+<li>{{ item.name }}: {{ item.value }}</li>
+{% endfor %}
+</ul>
 
 ## Asset Allocation
 
@@ -65,6 +71,45 @@ title: Home
 <td class="text-right">{{ subTotal | divided_by: totalPortfolioValue | times: 100 | round }}</td>
 
 <td class="text-right">{{ class.target }}</td>
+</tr>
+{% endfor %}
+</table>
+
+## Holdings
+
+<table class="usa-table width-tablet">
+<thead>
+<th>Holding</th>
+<th class="text-right">Value</th>
+<th class="text-right">Percentage</th>
+</thead>
+
+{% for holding in site.data.holdings %}
+<!-- Set a subtotal variable that is unique to each asset class -->
+{% assign holdingsSubTotal = forloop.index | prepend:"holding.name" %}
+
+<tr>
+<td>{{ holding.name }} ({{ holding.symbol}})</td>
+<td class="text-right">
+<!-- For each holding across all accounts... -->
+{% for accountHolding in allAccountHoldings %}
+
+<!-- Filter the holdings across all accounts by the symbols for each class -->
+{% assign matchedHoldings = accountHolding.holdings | where: "symbol", holding.symbol %}
+
+<!-- For each of the matching/filtered holdings... -->
+{% for matchedHolding in matchedHoldings %}
+
+<!-- Update the subtotal variable by adding the value of each holding to it. -->
+{% assign holdingsSubTotal = holdingsSubTotal | plus: matchedHolding.value %}
+
+{% endfor %}
+{% endfor %}
+
+<!-- Show the final results of the subtotal variable for each holding. -->
+{{ holdingsSubTotal }}
+</td>
+<td class="text-right">{{ holdingsSubTotal | divided_by: totalPortfolioValue | times: 100 | round }}</td>
 </tr>
 {% endfor %}
 </table>
