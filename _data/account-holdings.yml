@@ -1,0 +1,12 @@
+- name: Roth IRA
+  holdings:
+  - symbol: BRK.B
+    value: 314
+  - symbol: SWTSX
+    value: 586
+  - symbol: USD
+    value: 19
+- name: B&H Savings
+  holdings:
+  - symbol: USD
+    value: 1892

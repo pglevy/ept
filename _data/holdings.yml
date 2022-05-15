@@ -1,0 +1,12 @@
+- name: Cash
+  symbol: USD
+  class: CSH
+  type: Currency
+- name: Berkshire Hathaway
+  symbol: BRK.B
+  class: TSM
+  type: Stock
+- name: Schwab Total Stock Market Index Fund
+  symbol: SWTSX
+  class: TSM
+  type: Mutual Fund

@@ -1,0 +1,8 @@
+- name: Total Stock Market
+  abbreviation: TSM
+  stance: Offensive
+  target: 50
+- name: Cash
+  abbreviation: CSH
+  stance: Defensive
+  target: 50

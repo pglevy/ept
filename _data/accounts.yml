@@ -1,0 +1,8 @@
+- name: B&H Savings
+  institution: Burke & Herbert
+  treatment: taxable
+  value: 1892
+- name: Roth IRA
+  institution: Schwab
+  treatment: taxable contributions
+  value: 919
